@@ -10,15 +10,15 @@ public class OkHttpRequest {
 
     public static void main(String[] args) {
 
-        String getUrl = "https://postman-echo.com/get";
-        String postUrl = "https://postman-echo.com/post";
-        String data = "{ \"key\" : \"value\" }";
-
-        String getResult = requestGet(getUrl);
+        System.out.println("Request GET");
+        String getResult = requestGet(RequestData.getUrl);
         System.out.println(getResult);
+        System.out.println();
 
-        String postResult = requestPost(postUrl, data);
+        System.out.println("Request POST");
+        String postResult = requestPost(RequestData.postUrl, RequestData.data);
         System.out.println(postResult);
+        System.out.println();
 
     }
 
@@ -34,13 +34,15 @@ public class OkHttpRequest {
                     .url(url)
                     .build();
 
-            Response response = client.newCall(request).execute();
+            Response response = client
+                    .newCall(request)
+                    .execute();
 
             result = response.body().string();
 
         } catch(IOException error) {
 
-            result = "ERROR";
+            result = "EXCEPTION";
 
             error.printStackTrace();
 
@@ -63,13 +65,15 @@ public class OkHttpRequest {
                     .post(RequestBody.create(data, MediaType.parse("application/json")))
                     .build();
 
-            Response response = client.newCall(request).execute();
+            Response response = client
+                    .newCall(request)
+                    .execute();
 
             result = response.body().string();
 
         } catch(IOException error) {
 
-            result = "ERROR";
+            result = "EXCEPTION";
 
             error.printStackTrace();
 

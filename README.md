@@ -1,7 +1,6 @@
-# Java HTTP Request
+# Java Request Examples
 
 Example implementations of HTTP request using Java.
-
 
 ## Used Libraries
 

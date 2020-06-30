@@ -11,15 +11,15 @@ public class HttpURLConnectionRequest {
 
     public static void main(String[] args) {
 
-        String getUrl = "https://postman-echo.com/get";
-        String postUrl = "https://postman-echo.com/post";
-        String data = "{ \"key\" : \"value\" }";
-
-        String getResult = requestGet(getUrl);
+        System.out.println("Request GET");
+        String getResult = requestGet(RequestData.getUrl);
         System.out.println(getResult);
+        System.out.println();
 
-        String postResult = requestPost(postUrl, data);
+        System.out.println("Request POST");
+        String postResult = requestPost(RequestData.postUrl, RequestData.data);
         System.out.println(postResult);
+        System.out.println();
 
     }
 
@@ -42,7 +42,7 @@ public class HttpURLConnectionRequest {
 
         } catch (IOException error) {
 
-            result = "ERROR";
+            result = "EXCEPTION";
 
             error.printStackTrace();
 
@@ -80,7 +80,7 @@ public class HttpURLConnectionRequest {
 
         } catch (IOException error) {
 
-            result = "ERROR";
+            result = "EXCEPTION";
 
             error.printStackTrace();
 
