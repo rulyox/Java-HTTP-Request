@@ -1,3 +1,5 @@
+package request;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -6,27 +8,14 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class OkHttpRequest {
+public class OkHttpRequest implements SendRequest {
 
-    public static void main(String[] args) {
-
-        System.out.println("Request GET");
-        String getResult = requestGet(RequestData.getUrl);
-        System.out.println(getResult);
-        System.out.println();
-
-        System.out.println("Request POST");
-        String postResult = requestPost(RequestData.postUrl, RequestData.data);
-        System.out.println(postResult);
-        System.out.println();
-
-    }
-
-    private static String requestGet(String url) {
+    @Override
+    public String requestGet(String url) {
 
         String result;
 
-        try{
+        try {
 
             OkHttpClient client = new OkHttpClient();
 
@@ -52,11 +41,12 @@ public class OkHttpRequest {
 
     }
 
-    private static String requestPost(String url, String data) {
+    @Override
+    public String requestPost(String url, String data) {
 
         String result;
 
-        try{
+        try {
 
             OkHttpClient client = new OkHttpClient();
 

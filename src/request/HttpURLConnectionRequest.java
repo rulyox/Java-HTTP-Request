@@ -1,3 +1,5 @@
+package request;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -7,23 +9,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class HttpURLConnectionRequest {
+public class HttpURLConnectionRequest implements SendRequest {
 
-    public static void main(String[] args) {
-
-        System.out.println("Request GET");
-        String getResult = requestGet(RequestData.getUrl);
-        System.out.println(getResult);
-        System.out.println();
-
-        System.out.println("Request POST");
-        String postResult = requestPost(RequestData.postUrl, RequestData.data);
-        System.out.println(postResult);
-        System.out.println();
-
-    }
-
-    private static String requestGet(String url) {
+    @Override
+    public String requestGet(String url) {
 
         String result;
 
@@ -40,7 +29,7 @@ public class HttpURLConnectionRequest {
 
             connection.disconnect();
 
-        } catch (IOException error) {
+        } catch(IOException error) {
 
             result = "EXCEPTION";
 
@@ -52,7 +41,8 @@ public class HttpURLConnectionRequest {
 
     }
 
-    private static String requestPost(String url, String data) {
+    @Override
+    public String requestPost(String url, String data) {
 
         String result;
 
@@ -78,7 +68,7 @@ public class HttpURLConnectionRequest {
 
             connection.disconnect();
 
-        } catch (IOException error) {
+        } catch(IOException error) {
 
             result = "EXCEPTION";
 
@@ -90,7 +80,7 @@ public class HttpURLConnectionRequest {
 
     }
 
-    private static String getResponse(HttpURLConnection connection) throws IOException {
+    private String getResponse(HttpURLConnection connection) throws IOException {
 
         InputStream inputStream = connection.getInputStream();
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
