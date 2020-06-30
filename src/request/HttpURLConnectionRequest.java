@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 public class HttpURLConnectionRequest implements SendRequest {
 
     @Override
-    public String requestGet(String url) {
+    public String get(String url) {
 
         String result;
 
@@ -42,7 +42,7 @@ public class HttpURLConnectionRequest implements SendRequest {
     }
 
     @Override
-    public String requestPost(String url, String data) {
+    public String post(String url, String data) {
 
         String result;
 

@@ -1,18 +1,22 @@
 import request.HttpURLConnectionRequest;
 import request.OkHttpRequest;
+import request.RetrofitRequest;
 import request.SendRequest;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String getUrl = "https://postman-echo.com/get";
-        String postUrl = "https://postman-echo.com/post";
+        String url = "https://postman-echo.com";
+        String getApi = "/get";
+        String postApi = "/post";
         String data = "{ \"key\" : \"value\" }";
 
-        SendRequest[] reqs = new SendRequest[2];
-        reqs[0] = new HttpURLConnectionRequest();
-        reqs[1] = new OkHttpRequest();
+        SendRequest[] reqs = {
+            new HttpURLConnectionRequest(),
+            new OkHttpRequest(),
+            new RetrofitRequest(url)
+        };
 
         for(SendRequest req : reqs) {
 
@@ -20,12 +24,12 @@ public class Main {
             System.out.println();
 
             System.out.println("Request GET");
-            String getResult = req.requestGet(getUrl);
+            String getResult = req.get(url+getApi);
             System.out.println(getResult);
             System.out.println();
 
             System.out.println("Request POST");
-            String postResult = req.requestPost(postUrl, data);
+            String postResult = req.post(url+postApi, data);
             System.out.println(postResult);
             System.out.println();
 

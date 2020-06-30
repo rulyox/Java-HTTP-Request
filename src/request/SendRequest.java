@@ -2,7 +2,7 @@ package request;
 
 public interface SendRequest {
 
-    String requestGet(String url);
-    String requestPost(String url, String data);
+    String get(String url);
+    String post(String url, String data);
 
 }
